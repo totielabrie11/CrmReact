@@ -34,5 +34,14 @@
     "name": "visita en planta",
     "content": "ir a realizar visita en planta ",
     "id": 12
+  },
+  {
+    "date": "2024-03-28",
+    "sellerId": "3",
+    "sellerName": "Carlos Martínez",
+    "sellerColor": "#98FB98",
+    "name": "salir a caminar",
+    "content": "con la pochi",
+    "id": 13
   }
 ]

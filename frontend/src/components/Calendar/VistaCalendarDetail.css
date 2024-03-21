@@ -1,0 +1,27 @@
+/* Añade estos estilos en tu archivo CSS */
+
+.Modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch; /* Prefijo para navegadores webkit como Safari */
+    border-radius: 4px; /* No necesita comillas */
+    outline: none;
+    padding: 20px;
+  }
+  
+  .Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.75); /* No necesita comillas */
+  }
+  
