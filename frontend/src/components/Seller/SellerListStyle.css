@@ -1,0 +1,39 @@
+/* SellerListStyle.css */
+
+.vendedores-container {
+    background-color: #fff; /* Fondo blanco para la lista */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra suave para darle profundidad */
+    margin-left: 20px; /* Espacio a la izquierda del calendario */
+    width: 250px; /* Ancho fijo para la lista de vendedores */
+  }
+  
+  .vendedores-container h2 {
+    margin-bottom: 20px; /* Espacio debajo del título */
+    color: #333; /* Color del texto */
+    text-align: center; /* Centrar texto */
+  }
+  
+  .vendedores-container ul {
+    list-style-type: none; /* Remover viñetas de la lista */
+    margin: 0;
+    padding: 0;
+  }
+  
+  .vendedores-container li {
+    display: flex; /* Para alinear los ítems de la lista horizontalmente */
+    align-items: center; /* Centrar ítems en la dirección vertical */
+    margin-bottom: 10px; /* Espacio entre los ítems de la lista */
+  }
+  
+  .vendedores-container li::before {
+    content: ''; /* Necesario para que el pseudoelemento se muestre */
+    display: inline-block;
+    width: 15px; /* Tamaño del círculo */
+    height: 15px;
+    border-radius: 50%; /* Hacerlo redondo */
+    margin-right: 10px; /* Espacio entre el círculo y el texto */
+    background-color: currentColor; /* El color se define en línea en el JSX */
+  }
+  

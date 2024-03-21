@@ -1,4 +1,9 @@
 /* Estilos para centrar y estilizar el calendario */
+.main-content {
+  display: flex;
+  justify-content: center;
+}
+
 .calendar-container {
     display: flex;
     justify-content: center;

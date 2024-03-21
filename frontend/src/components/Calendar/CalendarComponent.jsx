@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import SellerList from '../Seller/SellerList';
 import 'react-calendar/dist/Calendar.css';
 import './CalendarStyles.css'; // Asegúrate de que este importe esté correcto
 
@@ -43,13 +44,14 @@ const CalendarComponent = () => {
   };
 
   return (
-    <div>
+    <div className='main-content'>
       <Calendar
         onChange={setDate}
         value={date}
         tileClassName={tileClassName}
         onClickDay={handleDayClick}
       />
+      <SellerList />
     </div>
   );
 };
