@@ -22,7 +22,7 @@ const SellerComponent = () => {
     '#FFFACD', 
     '#98FB98', 
     '#AFEEEE', 
-    '#E0FFFF', 
+    '#FFF71D', 
     '#F08080', 
     '#F4A460'
   ]); // Aquí pones tus colores en formato hexadecimal

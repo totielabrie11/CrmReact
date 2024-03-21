@@ -25,5 +25,14 @@
     "name": "Ir a comer con dueño",
     "content": "cena formal",
     "id": 11
+  },
+  {
+    "date": "2024-03-29",
+    "sellerId": "4",
+    "sellerName": "Pablo Ugarriz",
+    "sellerColor": "#FFF71D",
+    "name": "visita en planta",
+    "content": "ir a realizar visita en planta ",
+    "id": 12
   }
 ]

@@ -25,5 +25,14 @@
     "color": "#98FB98",
     "otrosDatos": "Mejor vendedor de calle",
     "id": 3
+  },
+  {
+    "nombre": "Pablo",
+    "apellido": "Ugarriz",
+    "edad": "44",
+    "celular": "1158585858",
+    "color": "#FFF71D",
+    "otrosDatos": "ingeniero en procesos",
+    "id": 4
   }
 ]
