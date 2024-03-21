@@ -1,0 +1,62 @@
+/* Estilos para centrar y estilizar el calendario */
+.calendar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ajusta esto según tus necesidades */
+  }
+  
+  .react-calendar {
+    border: none;
+    max-width: 90%;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif; /* Usa la fuente que prefieras */
+  }
+  
+  /* Estilos para los días del calendario */
+  .react-calendar__tile {
+    max-height: 100px; /* Ajusta la altura máxima de las celdas */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em; /* Aumenta el tamaño de las fechas */
+  }
+  
+  /* Estilos para el día actual */
+  .react-calendar__tile--now {
+    background-color: #ff0 !important;
+    color: black;
+  }
+  
+  /* Estilos para días con eventos */
+  .react-calendar__tile--active,
+  .react-calendar__tile--hasActive {
+    background-color: #ffd700 !important;
+    color: white;
+  }
+  
+  /* Aquí puedes agregar tus clases de colores para vendedores específicos, como ya tienes definido */
+  
+  /* Ajustes adicionales para botones, cabecera y navegación del calendario */
+  .react-calendar__navigation button {
+    background-color: transparent;
+    border: none;
+    font-size: 1.5em;
+  }
+  
+  .react-calendar__navigation button:enabled:hover,
+  .react-calendar__navigation button:enabled:focus {
+    background-color: transparent;
+    color: #888;
+  }
+  
+  .react-calendar__month-view__weekdays {
+    text-align: center;
+    font-weight: bold;
+    color: #444;
+  }
+  
+  .react-calendar__month-view__days__day--weekend {
+    color: #d10000;
+  }

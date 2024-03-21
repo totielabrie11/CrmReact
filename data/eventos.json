@@ -1,0 +1,99 @@
+[
+  {
+    "date": "2024-03-30",
+    "sellerId": 1,
+    "sellerName": "melina coutruneo",
+    "sellerColor": "#FA8072",
+    "name": "hacer esto",
+    "content": "apurate",
+    "id": 9
+  },
+  {
+    "date": "2024-03-23",
+    "sellerId": 2,
+    "sellerName": "leonardo diFusco",
+    "sellerColor": "#FFE4B5",
+    "name": "apurate",
+    "content": "lo quiero para ayer",
+    "id": 10
+  },
+  {
+    "date": "2024-03-21",
+    "sellerId": 3,
+    "sellerName": "Carlos Martínez",
+    "sellerColor": "#98FB98",
+    "name": "ir a buscar ",
+    "content": "anda rapido",
+    "id": 11
+  },
+  {
+    "date": "2024-03-27",
+    "sellerId": 4,
+    "sellerName": "Cintia Mendez",
+    "sellerColor": "#F11C1C",
+    "name": "Editar foto",
+    "content": "Fotos para la presentación de abril",
+    "id": 12
+  },
+  {
+    "date": "2024-03-29",
+    "sellerId": 4,
+    "sellerName": "Cintia Mendez",
+    "sellerColor": "#F11C1C",
+    "name": "Colorear",
+    "content": "eso",
+    "id": 13
+  },
+  {
+    "date": "2024-03-28",
+    "sellerId": 5,
+    "sellerName": "Pablo Ugarriz",
+    "sellerColor": "#FFE600",
+    "name": "Visita tecnica",
+    "content": "para ir a ver una planta",
+    "id": 14
+  },
+  {
+    "date": "2024-04-02",
+    "sellerId": 5,
+    "sellerName": "Pablo Ugarriz",
+    "sellerColor": "#FFE600",
+    "name": "visita",
+    "content": "visita en planta industrial",
+    "id": 15
+  },
+  {
+    "date": "2024-04-18",
+    "sellerId": 1,
+    "sellerName": "melina coutruneo",
+    "sellerColor": "#FA8072",
+    "name": "otro",
+    "content": "otro",
+    "id": 16
+  },
+  {
+    "date": "2024-04-16",
+    "sellerId": 2,
+    "sellerName": "leonardo diFusco",
+    "sellerColor": "#FFE4B5",
+    "name": "comprar pizza",
+    "content": "tenemos que ir a comprar una zappi",
+    "id": 17
+  },
+  {
+    "date": "2024-03-22",
+    "sellerId": "3",
+    "name": "hacer algo",
+    "content": "hacer algo",
+    "id": 18
+  },
+  {
+    "date": "2024-03-22",
+    "sellerId": "5",
+    "sellerName": "Pablo Ugarriz",
+    "sellerColor": "#FFE600",
+    "name": "ir de pesca",
+    "content": "vamos a pescar con carnada",
+    "id": 19
+  }
+]
