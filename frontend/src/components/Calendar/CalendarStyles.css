@@ -65,3 +65,15 @@
   .react-calendar__month-view__days__day--weekend {
     color: #d10000;
   }
+
+  /* Clases dinámicas basadas en los colores de los vendedores */
+.react-calendar__tile--event-color-FFB6C1 { background-color: #FFB6C1; }
+.react-calendar__tile--event-color-FA8072 { background-color: #FA8072; }
+.react-calendar__tile--event-color-FFA07A { background-color: #FFA07A; }
+.react-calendar__tile--event-color-FFE4B5 { background-color: #FFE4B5; }
+.react-calendar__tile--event-color-FFFACD { background-color: #FFFACD; }
+.react-calendar__tile--event-color-98FB98 { background-color: #98FB98; }
+.react-calendar__tile--event-color-AFEEEE { background-color: #AFEEEE; }
+.react-calendar__tile--event-color-E0FFFF { background-color: #E0FFFF; }
+.react-calendar__tile--event-color-F08080 { background-color: #F08080; }
+.react-calendar__tile--event-color-F4A460 { background-color: #F4A460; }

@@ -32,13 +32,14 @@ const CalendarComponent = () => {
     if (view === 'month') {
       const dateString = dateToString(date);
       const eventForDate = events.find(event => dateToString(new Date(event.date)) === dateString);
-      if (eventForDate) {
-        // Asume que tienes clases definidas para cada color de evento en tu CSS
-        return `event-${eventForDate.sellerColor}`;
+      if (eventForDate && eventForDate.sellerColor) {
+        // Convertir el color a un formato válido para la clase CSS (sin '#')
+        const colorClassSuffix = eventForDate.sellerColor.replace('#', '');
+        return `react-calendar__tile--event-color-${colorClassSuffix}`;
       }
     }
   };
-
+  
   const handleDayClick = (value) => {
     navigate(`/new-event?date=${dateToString(value)}`);
   };

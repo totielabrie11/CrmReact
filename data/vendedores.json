@@ -23,34 +23,7 @@
     "edad": "40",
     "celular": "1158235845",
     "color": "#98FB98",
-    "otrosDatos": "el mejor operador",
+    "otrosDatos": "Mejor vendedor de calle",
     "id": 3
-  },
-  {
-    "nombre": "Cintia",
-    "apellido": "Mendez",
-    "edad": "41",
-    "celular": "1151363373",
-    "color": "#F11C1C",
-    "otrosDatos": "Venta digital",
-    "id": 4
-  },
-  {
-    "nombre": "Pablo",
-    "apellido": "Ugarriz",
-    "edad": "44",
-    "celular": "151515151",
-    "color": "#FFE600",
-    "otrosDatos": "ingeniero en procesos",
-    "id": 5
-  },
-  {
-    "nombre": "Julieta",
-    "apellido": "Diaz",
-    "edad": "31",
-    "celular": "1158558585",
-    "color": "#AFEEEE",
-    "otrosDatos": "vendedora tira goma",
-    "id": 6
   }
 ]
