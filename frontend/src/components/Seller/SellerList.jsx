@@ -1,31 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './SellerListStyle.css'; // Asegúrate de que este importe esté correcto
+import './SellerListStyle.css';
 
 const SellerList = () => {
-  const [vendedores, setVendedores] = useState([]);
+  const [sellers, setSellers] = useState([]);
+  const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    const fetchVendedores = async () => {
+    // Obtén vendedores y eventos al cargar el componente
+    const fetchSellersAndEvents = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/vendedores');
-        setVendedores(response.data);
+        const sellersResponse = await axios.get('http://localhost:3001/vendedores');
+        const eventsResponse = await axios.get('http://localhost:3001/eventos');
+        setSellers(sellersResponse.data);
+        setEvents(eventsResponse.data); // Filtrar por 'pendiente' se hará en countTasksForSeller
       } catch (error) {
-        console.error('Error al cargar la lista de vendedores:', error);
-        // Aquí puedes manejar el error, como mostrar un mensaje al usuario
+        console.error('Error al cargar vendedores o eventos:', error);
       }
     };
 
-    fetchVendedores();
-  }, []); // El array vacío asegura que el efecto se ejecute solo una vez al montar el componente
+    fetchSellersAndEvents();
+  }, []);
+
+  // Función para contar las tareas pendientes de un vendedor
+  const countTasksForSeller = (sellerId) => {
+    // Filtrar eventos por vendedor y estado pendiente
+    return events.filter(event => event.sellerId === sellerId && event.status === 'pendiente').length;
+  };
 
   return (
     <div className='vendedores-container'>
       <h2>Vendedores Disponibles</h2>
       <ul>
-        {vendedores.map(vendedor => (
-          <li key={vendedor.id} style={{ color: vendedor.color }}>
-            {vendedor.nombre} {vendedor.apellido}
+        {sellers.map(seller => (
+          <li key={seller.id}>
+            <span className="seller-color" style={{ backgroundColor: seller.color }}></span>
+            {seller.nombre} {seller.apellido} - ({countTasksForSeller(seller.id)} tareas pendientes)
           </li>
         ))}
       </ul>
@@ -34,3 +44,6 @@ const SellerList = () => {
 };
 
 export default SellerList;
+
+
+

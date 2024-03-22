@@ -34,5 +34,14 @@
     "color": "#FFF71D",
     "otrosDatos": "ingeniero en procesos",
     "id": 4
+  },
+  {
+    "nombre": "totie",
+    "apellido": "labrie",
+    "edad": "25",
+    "celular": "1515151151",
+    "color": "#F4A460",
+    "otrosDatos": "soy el mejor",
+    "id": 5
   }
 ]

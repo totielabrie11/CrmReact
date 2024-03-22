@@ -66,6 +66,7 @@ const EventComponent = () => {
       sellerColor: sellers.find(seller => seller.id === parseInt(sellerId))?.color,
       name: eventName,
       content: eventContent,
+      status: 'pendiente'
     };
 
     try {
