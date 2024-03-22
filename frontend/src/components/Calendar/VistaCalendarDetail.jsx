@@ -8,6 +8,10 @@ Modal.setAppElement('#root');
 const VistaCalendarDetail = ({ isOpen, onRequestClose, eventsOfDay, selectedDate }) => {
   const navigate = useNavigate();
 
+  const sortedEventsOfDay = [...eventsOfDay].sort((a, b) => {
+    return a.time.localeCompare(b.time);
+  });
+
   const handleAddTaskClick = () => {
     onRequestClose(); // Cierra el modal
     navigate(`/new-event?date=${encodeURIComponent(selectedDate)}`); // Navega a la página de nuevo evento con la fecha seleccionada
@@ -23,7 +27,7 @@ const VistaCalendarDetail = ({ isOpen, onRequestClose, eventsOfDay, selectedDate
     >
       <h2>Detalles del Evento</h2>
       <ul>
-        {eventsOfDay.map((event, index) => (
+        {sortedEventsOfDay.map((event, index) => (
           <li key={index}>
             <strong>Horario:</strong> {event.time}<br />
             <strong>Vendedor:</strong> {event.sellerName}<br />
