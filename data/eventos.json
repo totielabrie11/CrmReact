@@ -43,5 +43,14 @@
     "name": "salir a caminar",
     "content": "con la pochi",
     "id": 13
+  },
+  {
+    "date": "2024-03-30",
+    "sellerId": "1",
+    "sellerName": "melina coutruneo",
+    "sellerColor": "#FA8072",
+    "name": "otra tarea",
+    "content": "gestionar otra tarea",
+    "id": 14
   }
 ]

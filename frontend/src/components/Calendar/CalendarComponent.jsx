@@ -10,6 +10,7 @@ import './CalendarStyles.css';
 const CalendarComponent = () => {
   const [date, setDate] = useState(new Date());
   const [events, setEvents] = useState([]);
+  const [selectedDate, setSelectedDate] = useState(''); // Agregado para manejar la fecha seleccionada
   const navigate = useNavigate();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedDayEvents, setSelectedDayEvents] = useState([]);
@@ -18,7 +19,7 @@ const CalendarComponent = () => {
     const fetchEvents = async () => {
       try {
         const response = await axios.get('http://localhost:3001/eventos');
-        setEvents(response.data); // Assume the response is an array of events
+        setEvents(response.data);
       } catch (error) {
         console.error('Error al cargar los eventos:', error);
       }
@@ -46,6 +47,8 @@ const CalendarComponent = () => {
     const dateString = dateToString(value);
     const eventsForDay = events.filter(event => dateToString(new Date(event.date)) === dateString);
 
+    setSelectedDate(dateString); // Establece la fecha seleccionada cuando se hace clic en un día
+
     if (eventsForDay.length > 0) {
       setSelectedDayEvents(eventsForDay);
       setModalIsOpen(true);
@@ -69,12 +72,12 @@ const CalendarComponent = () => {
       <SellerList />
       <VistaCalendarDetail 
         isOpen={modalIsOpen}
-        eventsOfDay={selectedDayEvents}
         onRequestClose={closeModal}
+        eventsOfDay={selectedDayEvents}
+        selectedDate={selectedDate} // Pasa la fecha seleccionada a VistaCalendarDetail
       />
     </div>
   );
 };
-
 
 export default CalendarComponent;

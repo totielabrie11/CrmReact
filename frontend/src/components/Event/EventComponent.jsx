@@ -6,25 +6,33 @@ import axios from 'axios';
 const EventComponent = () => {
   const { user } = useAuth();
   const [eventDate, setEventDate] = useState('');
-  const [sellerId, setSellerId] = useState(''); // Estado para almacenar el ID del vendedor seleccionado
-  const [sellers, setSellers] = useState([]); // Estado para almacenar los vendedores cargados
+  const [sellerId, setSellerId] = useState('');
+  const [sellers, setSellers] = useState([]);
   const [eventName, setEventName] = useState('');
   const [eventContent, setEventContent] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
   const { search } = useLocation();
-  
-  useEffect(() => {
-    const searchParams = new URLSearchParams(search);
-    const date = searchParams.get('date');
-    setEventDate(date);
 
-    // Función para cargar vendedores desde el backend
+  useEffect(() => {
+    // Obtiene los parámetros de búsqueda de la URL.
+    const searchParams = new URLSearchParams(search);
+    const dateParam = searchParams.get('date');
+    if (dateParam) {
+      // Si hay una fecha en la URL, configura el estado del componente.
+      setEventDate(dateParam);
+    } else {
+      // Si no hay fecha, muestra un error y redirige si es necesario.
+      console.error('No se proporcionó fecha del evento.');
+      // Redirige o maneja la falta de fecha según sea necesario.
+    }
+
+    // Función para cargar vendedores desde el backend.
     const fetchSellers = async () => {
       try {
         const response = await axios.get('http://localhost:3001/vendedores');
-        setSellers(response.data); // Suponiendo que la respuesta es el array de vendedores
+        setSellers(response.data);
       } catch (error) {
         console.error('Error al cargar los vendedores:', error);
       }
@@ -36,7 +44,7 @@ const EventComponent = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!user) {
-        setErrorMessage('Debe estar logueado para realizar esta acción');
+      setErrorMessage('Debe estar logueado para realizar esta acción');
         setTimeout(() => setErrorMessage(''), 3000);
         return;
     }
