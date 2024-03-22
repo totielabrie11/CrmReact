@@ -17,8 +17,10 @@ const VistaCalendarDetail = ({ isOpen, onRequestClose, eventsOfDay }) => {
       <ul>
         {eventsOfDay.map((event, index) => (
           <li key={index}>
-            <strong>Nombre:</strong> {event.name}<br />
             <strong>Vendedor:</strong> {event.sellerName}<br />
+            <strong>Tarea:</strong> {event.name}<br />
+            <strong>Detalle:</strong> {event.content}<br />
+            <strong></strong>
             {/* Agrega aquí más detalles como desees */}
           </li>
         ))}
