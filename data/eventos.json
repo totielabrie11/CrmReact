@@ -52,5 +52,82 @@
     "name": "otra tarea",
     "content": "gestionar otra tarea",
     "id": 14
+  },
+  {
+    "date": "2024-04-25",
+    "sellerId": "3",
+    "sellerName": "Carlos Martínez",
+    "sellerColor": "#98FB98",
+    "name": "hacer pipi",
+    "content": "quiero que hagas pipi",
+    "id": 15
+  },
+  {
+    "date": "2024-04-25",
+    "sellerId": "3",
+    "sellerName": "Carlos Martínez",
+    "sellerColor": "#98FB98",
+    "name": "luego ir a casa a hacer popo",
+    "content": "quiero eso",
+    "id": 16
+  },
+  {
+    "date": "2024-04-25",
+    "sellerId": "4",
+    "sellerName": "Pablo Ugarriz",
+    "sellerColor": "#FFF71D",
+    "name": "asistir a Carlos",
+    "content": "debes ir con el auto y levantar al vendedor",
+    "id": 17
+  },
+  {
+    "date": "2024-04-25",
+    "time": "15:00",
+    "sellerId": "4",
+    "sellerName": "Pablo Ugarriz",
+    "sellerColor": "#FFF71D",
+    "name": "llevar a chrly a la casa",
+    "content": "con el auto de la empresa",
+    "id": 18
+  },
+  {
+    "date": "2024-04-25",
+    "time": "15:30",
+    "sellerId": "4",
+    "sellerName": "Pablo Ugarriz",
+    "sellerColor": "#FFF71D",
+    "name": "volver a tu casa",
+    "content": "con el auto de la empresa",
+    "id": 19
+  },
+  {
+    "date": "2024-04-25",
+    "time": "16:00",
+    "sellerId": "2",
+    "sellerName": "leonardo diFusco",
+    "sellerColor": "#FFE4B5",
+    "name": "cerrar caja",
+    "content": "que no hayan pasado billetes falsos",
+    "id": 20
+  },
+  {
+    "date": "2024-03-28",
+    "time": "12:00",
+    "sellerId": "1",
+    "sellerName": "melina coutruneo",
+    "sellerColor": "#FA8072",
+    "name": "1",
+    "content": "1",
+    "id": 21
+  },
+  {
+    "date": "2024-04-25",
+    "time": "16:00",
+    "sellerId": "3",
+    "sellerName": "Carlos Martínez",
+    "sellerColor": "#98FB98",
+    "name": "ir a otro lugar",
+    "content": "hacer dos cosas al mismo tiempo",
+    "id": 22
   }
 ]

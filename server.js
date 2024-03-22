@@ -173,6 +173,31 @@ app.get('/vendedores', (req, res) => {
 });
 
 
+// Endpoint para verificar la existencia de un evento en un horario específico
+app.get('/eventos/verificar', (req, res) => {
+    const { date, time, sellerId } = req.query; // Obtiene la fecha, hora y sellerId de los parámetros de consulta
+
+    fs.readFile(eventosFilePath, (err, data) => {
+        if (err) {
+            console.error('Error al leer el archivo de eventos:', err);
+            return res.status(500).send('Error al leer el archivo de eventos');
+        }
+
+        const eventos = JSON.parse(data);
+        // Buscar si existe algún evento con la misma fecha, hora y sellerId
+        const eventoExistente = eventos.some(evento => evento.date === date && evento.time === time && evento.sellerId === sellerId);
+
+        if (eventoExistente) {
+            // Si encuentra un evento existente para el mismo vendedor, responde indicando que el horario ya fue asignado
+            res.json({ exists: true });
+        } else {
+            // Si no hay eventos en ese horario para el mismo vendedor, indica que el horario está disponible
+            res.json({ exists: false });
+        }
+    });
+});
+
+
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });

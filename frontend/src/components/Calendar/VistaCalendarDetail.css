@@ -1,27 +1,62 @@
-/* Añade estos estilos en tu archivo CSS */
-
+/* Estilos para el modal */
 .Modal {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    right: auto;
-    bottom: auto;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
-    background: #fff;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch; /* Prefijo para navegadores webkit como Safari */
-    border-radius: 4px; /* No necesita comillas */
-    outline: none;
-    padding: 20px;
-  }
-  
-  .Overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(232, 221, 221, 0.75); /* No necesita comillas */
-  }
-  
+  position: fixed; /* Cambiado de absolute a fixed para mejor centrado */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%; /* Controla el ancho del modal */
+  max-width: 600px; /* Máximo ancho para evitar que sea demasiado grande */
+  background: #fff;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 10px; /* Bordes más redondeados */
+  outline: none;
+  padding: 30px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Sombra sutil */
+}
+
+/* Estilos para el overlay/fondo oscuro detrás del modal */
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Oscurecido para mayor contraste */
+}
+
+/* Estilo para los botones dentro del modal */
+.Modal button {
+  background-color: #007bff; /* Color azul */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-right: 10px; /* Separación entre botones */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer;
+  transition: background-color 0.3s; /* Transición suave al cambiar de color */
+}
+
+.Modal button:hover {
+  background-color: #0056b3; /* Color azul oscuro al pasar el mouse */
+}
+
+/* Estilo para la lista de eventos */
+.Modal ul {
+  list-style-type: none; /* Remover los bullets de la lista */
+  padding: 0;
+  max-height: 300px; /* Altura máxima antes de mostrar scroll */
+  overflow-y: auto; /* Mostrar scroll verticalmente si es necesario */
+}
+
+/* Estilo para separar visualmente cada evento */
+.Modal li {
+  margin-bottom: 20px; /* Espacio entre eventos */
+  padding-bottom: 20px; /* Espacio interior en la parte inferior de cada evento */
+  border-bottom: 1px solid #eaeaea; /* Línea sutil para separar eventos */
+}
+
+/* Último elemento de la lista sin borde inferior */
+.Modal li:last-child {
+  border-bottom: none;
+}

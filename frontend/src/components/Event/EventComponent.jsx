@@ -6,6 +6,7 @@ import axios from 'axios';
 const EventComponent = () => {
   const { user } = useAuth();
   const [eventDate, setEventDate] = useState('');
+  const [eventTime, setEventTime] = useState('');
   const [sellerId, setSellerId] = useState('');
   const [sellers, setSellers] = useState([]);
   const [eventName, setEventName] = useState('');
@@ -16,19 +17,12 @@ const EventComponent = () => {
   const { search } = useLocation();
 
   useEffect(() => {
-    // Obtiene los parámetros de búsqueda de la URL.
     const searchParams = new URLSearchParams(search);
     const dateParam = searchParams.get('date');
     if (dateParam) {
-      // Si hay una fecha en la URL, configura el estado del componente.
       setEventDate(dateParam);
-    } else {
-      // Si no hay fecha, muestra un error y redirige si es necesario.
-      console.error('No se proporcionó fecha del evento.');
-      // Redirige o maneja la falta de fecha según sea necesario.
     }
 
-    // Función para cargar vendedores desde el backend.
     const fetchSellers = async () => {
       try {
         const response = await axios.get('http://localhost:3001/vendedores');
@@ -45,54 +39,51 @@ const EventComponent = () => {
     e.preventDefault();
     if (!user) {
       setErrorMessage('Debe estar logueado para realizar esta acción');
-        setTimeout(() => setErrorMessage(''), 3000);
-        return;
+      setTimeout(() => setErrorMessage(''), 3000);
+      return;
     }
 
-    const eventDateObj = new Date(eventDate);
-    const currentDate = new Date();
-    currentDate.setHours(0, 0, 0, 0);
-
-    if (eventDateObj < currentDate) {
-        alert('El evento no puede ser pasado.');
-        return;
-    }
-
-    // Encuentra el vendedor seleccionado basado en sellerId
-    const selectedSeller = sellers.find(seller => seller.id === parseInt(sellerId));
-
-    if (!selectedSeller) {
-        console.error('Vendedor no encontrado');
-        setErrorMessage('Vendedor no encontrado. Por favor, seleccione un vendedor válido.');
-        setTimeout(() => setErrorMessage(''), 3000);
-        return;
+    // Verifica si el horario ya está ocupado por el mismo vendedor
+  try {
+    const checkTimeResponse = await axios.get(`http://localhost:3001/eventos/verificar?date=${eventDate}&time=${eventTime}&sellerId=${sellerId}`);
+    if (checkTimeResponse.data.exists) {
+      setErrorMessage('El horario seleccionado ya fue asignado a este vendedor');
+      setTimeout(() => setErrorMessage(''), 3000);
+      return;
+  }
+    } catch (error) {
+      console.error('Error al verificar el horario del evento:', error);
+      setErrorMessage('Error al verificar el horario del evento.');
+      setTimeout(() => setErrorMessage(''), 3000);
+      return;
     }
 
     const eventData = {
-        date: eventDate,
-        sellerId, // Usando el ID del vendedor seleccionado
-        sellerName: `${selectedSeller.nombre} ${selectedSeller.apellido}`, // Concatenando nombre y apellido del vendedor
-        sellerColor: selectedSeller.color, // Usando el color del vendedor seleccionado
-        name: eventName,
-        content: eventContent,
+      date: eventDate,
+      time: eventTime,
+      sellerId,
+      sellerName: `${sellers.find(seller => seller.id === parseInt(sellerId))?.nombre} ${sellers.find(seller => seller.id === parseInt(sellerId))?.apellido}`,
+      sellerColor: sellers.find(seller => seller.id === parseInt(sellerId))?.color,
+      name: eventName,
+      content: eventContent,
     };
 
     try {
-        const response = await axios.post('http://localhost:3001/eventos', eventData);
-        console.log(response.data.message);
-        setSuccessMessage('Evento cargado exitosamente.');
-        setTimeout(() => setSuccessMessage(''), 3000);
-        resetForm();
+      const response = await axios.post('http://localhost:3001/eventos', eventData);
+      console.log(response.data.message);
+      setSuccessMessage('Evento cargado exitosamente.');
+      setTimeout(() => setSuccessMessage(''), 3000);
+      resetForm();
     } catch (error) {
-        console.error('Error al guardar el evento:', error);
-        setErrorMessage('Error al guardar el evento.');
-        setTimeout(() => setErrorMessage(''), 3000);
+      console.error('Error al guardar el evento:', error);
+      setErrorMessage('Error al guardar el evento.');
+      setTimeout(() => setErrorMessage(''), 3000);
     }
-};
-
+  };
 
   const resetForm = () => {
     setEventDate('');
+    setEventTime('');
     setSellerId('');
     setEventName('');
     setEventContent('');
@@ -107,6 +98,15 @@ const EventComponent = () => {
         <div>
           <label>Fecha del Evento:</label>
           <input type="text" value={eventDate} disabled />
+        </div>
+        <div>
+          <label>Horario del Evento:</label>
+          <input
+            type="time"
+            value={eventTime}
+            onChange={(e) => setEventTime(e.target.value)}
+            required
+          />
         </div>
         <div>
           <label>Nombre del Vendedor:</label>
@@ -144,6 +144,8 @@ const EventComponent = () => {
       </form>
     </div>
   );
-};
+  
+}
 
 export default EventComponent;
+
