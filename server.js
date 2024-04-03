@@ -73,6 +73,29 @@ app.post('/login', (req, res) => {
     });
 });
 
+// Endpoint para obtener todos los eventos, con opción de filtrar por sellerId y status
+app.get('/eventos', (req, res) => {
+    fs.readFile(eventosFilePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send('Error al leer el archivo de eventos');
+        }
+
+        let eventos = JSON.parse(data);
+        const { sellerId, status } = req.query;
+
+        // Filtrar eventos por sellerId y status si se proporcionan
+        if (sellerId) {
+            eventos = eventos.filter(evento => evento.sellerId.toString() === sellerId);
+        }
+        if (status) {
+            eventos = eventos.filter(evento => evento.status === status);
+        }
+
+        res.status(200).json(eventos);
+    });
+});
+
 
 // Endpoint para crear un evento
 app.post('/eventos', (req, res) => {
@@ -123,7 +146,44 @@ app.get('/eventos', (req, res) => {
 });
 
 
-// Endpoint para crear un vendedor
+// Endpoint para actualizar la nota de un evento específico
+// Endpoint para actualizar la nota de un evento específico
+app.put('/eventos/:id/updateNote', (req, res) => {
+    const { id } = req.params; // ID del evento a actualizar
+    const { text, date } = req.body; // Datos de la nota
+
+    fs.readFile(eventosFilePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error al leer el archivo de eventos', err);
+            return res.status(500).send('Error al procesar la solicitud');
+        }
+
+        let eventos = JSON.parse(data);
+        const eventoIndex = eventos.findIndex(evento => evento.id.toString() === id);
+
+        if (eventoIndex === -1) {
+            return res.status(404).send('Evento no encontrado');
+        }
+
+        // Si el evento tiene ya un campo de notas, lo actualizamos. Si no, lo creamos.
+        if (!eventos[eventoIndex].notes) {
+            eventos[eventoIndex].notes = [];
+        }
+        eventos[eventoIndex].notes.push({ text, date });
+
+        fs.writeFile(eventosFilePath, JSON.stringify(eventos, null, 2), (err) => {
+            if (err) {
+                console.error('Error al actualizar el evento', err);
+                return res.status(500).send('Error al guardar los cambios');
+            }
+            res.status(200).json({ message: 'Nota actualizada con éxito', evento: eventos[eventoIndex] });
+        });
+    });
+});
+
+
+
+
 // Endpoint para crear un vendedor y un usuario asociado
 app.post('/vendedores', async (req, res) => {
     const newSeller = req.body;

@@ -53,5 +53,70 @@
     "content": "bien mojadito",
     "status": "pendiente",
     "id": 29
+  },
+  {
+    "date": "2024-05-04",
+    "time": "12:00",
+    "sellerId": "9",
+    "sellerName": "ekaterina cordoba",
+    "sellerColor": "#98FB98",
+    "name": "hacer otro pete",
+    "content": "pete",
+    "status": "pendiente",
+    "id": 30
+  },
+  {
+    "date": "2024-05-05",
+    "time": "12:00",
+    "sellerId": "2",
+    "sellerName": "leonardo diFusco",
+    "sellerColor": "#FFE4B5",
+    "name": "recibir pete",
+    "content": "pete",
+    "status": "pendiente",
+    "id": 31
+  },
+  {
+    "date": "2024-04-26",
+    "time": "12:00",
+    "sellerId": "1",
+    "sellerName": "melina coutruneo",
+    "sellerColor": "#FA8072",
+    "name": "agarrar",
+    "content": "no",
+    "status": "pendiente",
+    "id": 32
+  },
+  {
+    "date": "2024-05-10",
+    "time": "15:00",
+    "sellerId": "4",
+    "sellerName": "Pablo Ugarriz",
+    "sellerColor": "#FFF71D",
+    "name": "cuchillos",
+    "content": "ir a buscar los cuchillos grabados logo dosivac",
+    "status": "pendiente",
+    "id": 33,
+    "notes": [
+      {
+        "date": "2024-04-03T18:50:54.423Z"
+      },
+      {
+        "date": "2024-04-03T18:51:13.382Z"
+      },
+      {
+        "text": "enviando una nota",
+        "date": "2024-04-03 16:00:42"
+      },
+      {},
+      {
+        "text": "nueva nota recein",
+        "date": "2024-04-03T19:07:03.522Z"
+      },
+      {
+        "text": "otra nota nueva",
+        "date": "2024-04-03T19:07:56.738Z"
+      }
+    ]
   }
 ]

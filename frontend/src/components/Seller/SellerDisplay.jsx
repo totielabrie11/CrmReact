@@ -1,17 +1,17 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '../AuthContext/AuthContext';
 import axios from 'axios';
+import { format, isValid, parseISO } from 'date-fns';
 
 const SellerDisplay = () => {
   const { user } = useAuth();
   const [tasks, setTasks] = useState([]);
-  const [note, setNote] = useState("");
+  const [newNote, setNewNote] = useState("");
 
-  // Definimos fetchTasks usando useCallback para evitar el problema de ámbito y re-creación en cada render
   const fetchTasks = useCallback(async () => {
     if (user && user.type === 'vendedor') {
       try {
-        const response = await axios.get(`http://localhost:3001/tasks?sellerId=${user.id}&status=pendiente`);
+        const response = await axios.get(`http://localhost:3001/eventos?sellerId=${user.id}&status=pendiente`);
         setTasks(response.data);
       } catch (error) {
         console.error('Error al cargar las tareas:', error);
@@ -19,27 +19,21 @@ const SellerDisplay = () => {
     }
   }, [user]);
 
-  // Usamos useEffect para llamar a fetchTasks cuando el componente se monta o cuando el usuario cambia
   useEffect(() => {
     fetchTasks();
   }, [fetchTasks]);
 
-  const completeTask = async (taskId) => {
-    try {
-      await axios.put(`http://localhost:3001/tasks/${taskId}`, { status: 'completado' });
-      await fetchTasks(); // Ahora fetchTasks está definido y puede ser llamado aquí
-    } catch (error) {
-      console.error('Error al completar la tarea:', error);
-    }
-  };
-
   const updateNote = async (taskId) => {
+    const noteData = {
+      text: newNote,
+      date: new Date().toISOString(),
+    };
     try {
-      await axios.put(`http://localhost:3001/tasks/${taskId}`, { note });
-      setNote("");  // Limpia el campo de nota después de enviar
-      await fetchTasks();  // Ahora fetchTasks está definido y puede ser llamado aquí
+      await axios.put(`http://localhost:3001/eventos/${taskId}/updateNote`, noteData);
+      setNewNote("");
+      fetchTasks();
     } catch (error) {
-      console.error('Error al actualizar la nota de la tarea:', error);
+      console.error('Error al actualizar la nota:', error);
     }
   };
 
@@ -55,18 +49,21 @@ const SellerDisplay = () => {
           <li key={task.id}>
             <div>
               <strong>Tarea:</strong> {task.name} <br />
+              <strong>Detalle:</strong> {task.content} <br />
               <strong>Estado:</strong> {task.status} <br />
-              <strong>Nota:</strong> {task.note || "Ninguna"} <br />
-              <button onClick={() => completeTask(task.id)}>Marcar como Completada</button>
-              <div>
-                <input
-                  type="text"
-                  placeholder="Añadir nota"
-                  value={note}
-                  onChange={(e) => setNote(e.target.value)}
-                />
-                <button onClick={() => updateNote(task.id)}>Actualizar Nota</button>
-              </div>
+              {task.notes?.map((note, index) => (
+                <div key={index}>
+                  <strong>Nota ({isValid(parseISO(note.date)) ? format(parseISO(note.date), 'PPpp') : 'Fecha inválida'}):</strong> {note.text}
+                </div>
+              ))}
+              <input
+                type="text"
+                placeholder="Añadir nota"
+                value={newNote}
+                onChange={(e) => setNewNote(e.target.value)}
+              />
+              <button onClick={() => updateNote(task.id)}>Actualizar Nota</button>
+              {/* Aquí la implementación del botón para marcar como completada */}
             </div>
           </li>
         ))}
@@ -76,3 +73,4 @@ const SellerDisplay = () => {
 };
 
 export default SellerDisplay;
+
