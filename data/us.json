@@ -8,6 +8,11 @@
       "username": "user2",
       "password": "pass2",
       "type": "administrador"
+    },
+    {
+      "username": "Charly",
+      "password": "charly123",
+      "type": "vendedor"
     }
   ]
   
