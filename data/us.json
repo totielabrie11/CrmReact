@@ -1,18 +1,35 @@
 [
-    {
-      "username": "admin",
-      "password": "adminpass",
-      "type": "administrador"
-    },
-    {
-      "username": "user2",
-      "password": "pass2",
-      "type": "administrador"
-    },
-    {
-      "username": "Charly",
-      "password": "charly123",
-      "type": "vendedor"
-    }
-  ]
-  
+  {
+    "username": "admin",
+    "password": "adminpass",
+    "type": "administrador"
+  },
+  {
+    "username": "user2",
+    "password": "pass2",
+    "type": "administrador"
+  },
+  {
+    "username": "Charly",
+    "password": "charly123",
+    "type": "vendedor"
+  },
+  {
+    "id": "7",
+    "username": "Pocho",
+    "password": "",
+    "type": "vendedor"
+  },
+  {
+    "id": "8",
+    "username": "otro",
+    "password": "",
+    "type": "vendedor"
+  },
+  {
+    "id": "9",
+    "username": "ekaterina",
+    "password": "",
+    "type": "vendedor"
+  }
+]

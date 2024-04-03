@@ -122,55 +122,67 @@ app.get('/eventos', (req, res) => {
     });
 });
 
+
 // Endpoint para crear un vendedor
-app.post('/vendedores', (req, res) => {
+// Endpoint para crear un vendedor y un usuario asociado
+app.post('/vendedores', async (req, res) => {
     const newSeller = req.body;
 
-    fs.readFile(vendedoresFilePath, 'utf8', (err, data) => {
-        if (err) {
-            console.error(err);
-            res.status(500).send('Error al leer el archivo de vendedores');
-            return;
-        }
-        
-        let vendedores = JSON.parse(data);
-        
-        // Calcular el nuevo ID
-        const maxId = vendedores.reduce((acc, seller) => seller.id > acc ? seller.id : acc, 0);
-        newSeller.id = maxId + 1;
-        
-        // Añadir el nuevo vendedor al array de vendedores
-        vendedores.push(newSeller);
+    try {
+        const [vendedoresData, usersData] = await Promise.all([
+            fs.promises.readFile(vendedoresFilePath, 'utf8'),
+            fs.promises.readFile(usersFilePath, 'utf8')
+        ]);
 
-        // Guardar de nuevo el archivo vendedores.json
-        fs.writeFile(vendedoresFilePath, JSON.stringify(vendedores, null, 2), (err) => {
-            if (err) {
-                console.error(err);
-                res.status(500).send('Error al guardar el vendedor');
-                return;
-            }
-            res.status(201).json({ message: 'Vendedor guardado con éxito', seller: newSeller });
-        });
-    });
+        const vendedores = JSON.parse(vendedoresData);
+        const users = JSON.parse(usersData);
+
+        const maxVendedorId = vendedores.reduce((max, { id }) => Math.max(max, Number(id) || 0), 0);
+        const maxUserId = users.reduce((max, { id }) => Math.max(max, Number(id) || 0), 0);
+        const newId = Math.max(maxVendedorId, maxUserId) + 1;
+
+        newSeller.id = newId;
+
+        vendedores.push(newSeller);
+        await fs.promises.writeFile(vendedoresFilePath, JSON.stringify(vendedores, null, 2));
+
+        const newUser = {
+            id: newId.toString(),
+            username: newSeller.nombre,
+            password: "",
+            type: "vendedor"
+        };
+
+        users.push(newUser);
+        await fs.promises.writeFile(usersFilePath, JSON.stringify(users, null, 2));
+
+        res.status(201).json({ message: 'Vendedor y usuario creados exitosamente', newSeller, newUser });
+    } catch (err) {
+        console.error('Error procesando la solicitud:', err);
+        res.status(500).send('Error al procesar la solicitud');
+    }
 });
+
 
 // Endpoint para obtener la lista de vendedores
 app.get('/vendedores', (req, res) => {
     fs.readFile(vendedoresFilePath, 'utf8', (err, data) => {
         if (err) {
             console.error('Error al leer el archivo de vendedores:', err);
-            return res.status(500).send('Error al leer el archivo de vendedores');
+            res.status(500).send('Error al leer el archivo de vendedores');
+            return;
         }
 
         try {
             const vendedores = JSON.parse(data);
-            res.status(200).json(vendedores); // Envía la lista de vendedores al cliente
+            res.status(200).json(vendedores);
         } catch (error) {
             console.error('Error al parsear los vendedores:', error);
             res.status(500).send('Error al procesar los datos de vendedores');
         }
     });
 });
+
 
 
 // Endpoint para verificar la existencia de un evento en un horario específico

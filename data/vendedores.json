@@ -52,5 +52,32 @@
     "color": "#FFB6C1",
     "otrosDatos": "Vendedor de calle con vehiculo",
     "id": 6
+  },
+  {
+    "nombre": "Pocho",
+    "apellido": "Mendez",
+    "edad": "41",
+    "celular": "1151363373",
+    "color": "#FFE4B5",
+    "otrosDatos": "tira la piola como ninguna",
+    "id": 7
+  },
+  {
+    "nombre": "otro",
+    "apellido": "otro",
+    "edad": "21",
+    "celular": "55",
+    "color": "#FFB6C1",
+    "otrosDatos": "otro",
+    "id": 8
+  },
+  {
+    "nombre": "ekaterina",
+    "apellido": "cordoba",
+    "edad": "41",
+    "celular": "1158585858",
+    "color": "#98FB98",
+    "otrosDatos": "tira pete",
+    "id": 9
   }
 ]
