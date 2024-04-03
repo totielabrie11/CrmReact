@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 Modal.setAppElement('#root');
 
-const VistaCalendarDetail = ({ isOpen, onRequestClose, eventsOfDay, selectedDate }) => {
+const VistaCalendarDetail = ({ isOpen, onRequestClose, eventsOfDay, selectedDate, updateTaskStatus }) => {
   const navigate = useNavigate();
 
   const sortedEventsOfDay = [...eventsOfDay].sort((a, b) => {
@@ -15,6 +15,14 @@ const VistaCalendarDetail = ({ isOpen, onRequestClose, eventsOfDay, selectedDate
   const handleAddTaskClick = () => {
     onRequestClose(); // Cierra el modal
     navigate(`/new-event?date=${encodeURIComponent(selectedDate)}`); // Navega a la página de nuevo evento con la fecha seleccionada
+  };
+
+  // Función para manejar la actualización del estado de una tarea
+  const handleUpdateTaskStatus = (taskId, newStatus) => {
+    updateTaskStatus(taskId, newStatus).then(() => {
+      onRequestClose(); // Opcional: Cierra el modal después de actualizar
+      // Considera refrescar los eventos o realizar alguna otra acción después de la actualización
+    });
   };
 
   return (
@@ -33,6 +41,9 @@ const VistaCalendarDetail = ({ isOpen, onRequestClose, eventsOfDay, selectedDate
             <strong>Vendedor:</strong> {event.sellerName}<br />
             <strong>Tarea:</strong> {event.name}<br />
             <strong>Detalle:</strong> {event.content}<br />
+            <strong>Estado:</strong> {event.status}<br />
+            {/* Añadir botón para actualizar el estado de la tarea */}
+            <button onClick={() => handleUpdateTaskStatus(event.id, 'completado')}>Marcar como completado</button>
           </li>
         ))}
       </ul>

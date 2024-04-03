@@ -1,75 +1,5 @@
 [
   {
-    "date": "2024-04-25",
-    "time": "15:00",
-    "sellerId": "4",
-    "sellerName": "Pablo Ugarriz",
-    "sellerColor": "#FFF71D",
-    "name": "llevar a chrly a la casa",
-    "content": "con el auto de la empresa",
-    "id": 18
-  },
-  {
-    "date": "2024-04-25",
-    "time": "15:30",
-    "sellerId": "4",
-    "sellerName": "Pablo Ugarriz",
-    "sellerColor": "#FFF71D",
-    "name": "volver a tu casa",
-    "content": "con el auto de la empresa",
-    "id": 19
-  },
-  {
-    "date": "2024-04-25",
-    "time": "16:00",
-    "sellerId": "2",
-    "sellerName": "leonardo diFusco",
-    "sellerColor": "#FFE4B5",
-    "name": "cerrar caja",
-    "content": "que no hayan pasado billetes falsos",
-    "id": 20
-  },
-  {
-    "date": "2024-03-28",
-    "time": "12:00",
-    "sellerId": "1",
-    "sellerName": "melina coutruneo",
-    "sellerColor": "#FA8072",
-    "name": "1",
-    "content": "1",
-    "id": 21
-  },
-  {
-    "date": "2024-04-25",
-    "time": "16:00",
-    "sellerId": "3",
-    "sellerName": "Carlos Martínez",
-    "sellerColor": "#98FB98",
-    "name": "ir a otro lugar",
-    "content": "hacer dos cosas al mismo tiempo",
-    "id": 22
-  },
-  {
-    "date": "2024-04-25",
-    "time": "12:00",
-    "sellerId": "3",
-    "sellerName": "Carlos Martínez",
-    "sellerColor": "#98FB98",
-    "name": "arrancar temprano",
-    "content": "hacer todo temprano",
-    "id": 23
-  },
-  {
-    "date": "2024-03-22",
-    "time": "15:00",
-    "sellerId": "2",
-    "sellerName": "leonardo diFusco",
-    "sellerColor": "#FFE4B5",
-    "name": "hola",
-    "content": "hola",
-    "id": 24
-  },
-  {
     "date": "2024-03-28",
     "time": "12:55",
     "sellerId": "1",
@@ -79,5 +9,38 @@
     "content": "eso",
     "status": "pendiente",
     "id": 25
+  },
+  {
+    "date": "2024-04-03",
+    "time": "12:00",
+    "sellerId": "6",
+    "sellerName": "Hugo Verón",
+    "sellerColor": "#FFB6C1",
+    "name": "Pasar a buscar a Rodrigo",
+    "content": "por la casa en el conuntry",
+    "status": "pendiente",
+    "id": 26
+  },
+  {
+    "date": "2024-04-03",
+    "time": "13:00",
+    "sellerId": "6",
+    "sellerName": "Hugo Verón",
+    "sellerColor": "#FFB6C1",
+    "name": "dejar a rodrigo en destino",
+    "content": "con tu vehiculo",
+    "status": "pendiente",
+    "id": 27
+  },
+  {
+    "date": "2024-03-29",
+    "time": "12:00",
+    "sellerId": "5",
+    "sellerName": "totie labrie",
+    "sellerColor": "#F4A460",
+    "name": "ir a buscar carne",
+    "content": "para el asadito",
+    "status": "pendiente",
+    "id": 28
   }
 ]

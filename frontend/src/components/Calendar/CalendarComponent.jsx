@@ -10,7 +10,7 @@ import './CalendarStyles.css';
 const CalendarComponent = () => {
   const [date, setDate] = useState(new Date());
   const [events, setEvents] = useState([]);
-  const [selectedDate, setSelectedDate] = useState(''); // Agregado para manejar la fecha seleccionada
+  const [selectedDate, setSelectedDate] = useState('');
   const navigate = useNavigate();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedDayEvents, setSelectedDayEvents] = useState([]);
@@ -19,6 +19,7 @@ const CalendarComponent = () => {
     const fetchEvents = async () => {
       try {
         const response = await axios.get('http://localhost:3001/eventos');
+        console.log(response.data);
         setEvents(response.data);
       } catch (error) {
         console.error('Error al cargar los eventos:', error);
@@ -43,12 +44,26 @@ const CalendarComponent = () => {
     }
   };
 
+  // Función para actualizar el estado de una tarea
+  const updateTaskStatus = async (taskId, newStatus) => {
+    try {
+      await axios.put(`http://localhost:3001/eventos/${taskId}`, { status: newStatus });
+      setEvents(currentEvents => currentEvents.map(event => {
+        if (event.id === taskId) {
+          return { ...event, status: newStatus };
+        }
+        return event;
+      }));
+    } catch (error) {
+      console.error('Error al actualizar la tarea:', error);
+    }
+  };
+
   const handleDayClick = (value) => {
     const dateString = dateToString(value);
     const eventsForDay = events.filter(event => dateToString(new Date(event.date)) === dateString);
 
-    setSelectedDate(dateString); // Establece la fecha seleccionada cuando se hace clic en un día
-
+    setSelectedDate(dateString);
     if (eventsForDay.length > 0) {
       setSelectedDayEvents(eventsForDay);
       setModalIsOpen(true);
@@ -69,12 +84,15 @@ const CalendarComponent = () => {
         tileClassName={tileClassName}
         onClickDay={handleDayClick}
       />
-      <SellerList />
+      {/* Pasar updateTaskStatus como prop a SellerList si es necesario */}
+      <SellerList updateTaskStatus={updateTaskStatus} />
+      {/* Pasar updateTaskStatus a VistaCalendarDetail */}
       <VistaCalendarDetail 
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         eventsOfDay={selectedDayEvents}
-        selectedDate={selectedDate} // Pasa la fecha seleccionada a VistaCalendarDetail
+        selectedDate={selectedDate}
+        updateTaskStatus={updateTaskStatus} // Pasar la función como prop
       />
     </div>
   );

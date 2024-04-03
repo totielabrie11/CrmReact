@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './SellerListStyle.css';
 
-const SellerList = () => {
+// Acepta updateTaskStatus como prop
+const SellerList = ({ updateTaskStatus }) => {
   const [sellers, setSellers] = useState([]);
   const [events, setEvents] = useState([]);
 
@@ -24,9 +25,13 @@ const SellerList = () => {
 
   // Función para contar las tareas pendientes de un vendedor
   const countTasksForSeller = (sellerId) => {
-    // Filtrar eventos por vendedor y estado pendiente
-    return events.filter(event => event.sellerId === sellerId && event.status === 'pendiente').length;
+    // Asumiendo que sellerId es un número pero en eventos es un string.
+    const pendingTasks = events.filter(event => String(event.sellerId) === String(sellerId) && event.status === 'pendiente');
+    console.log(pendingTasks); // Verificar los eventos filtrados
+    return pendingTasks.length;
   };
+  
+  
 
   return (
     <div className='vendedores-container'>
@@ -44,6 +49,7 @@ const SellerList = () => {
 };
 
 export default SellerList;
+
 
 
 

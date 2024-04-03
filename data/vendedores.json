@@ -43,5 +43,14 @@
     "color": "#F4A460",
     "otrosDatos": "soy el mejor",
     "id": 5
+  },
+  {
+    "nombre": "Hugo",
+    "apellido": "Verón",
+    "edad": "51",
+    "celular": "1156565656",
+    "color": "#FFB6C1",
+    "otrosDatos": "Vendedor de calle con vehiculo",
+    "id": 6
   }
 ]
