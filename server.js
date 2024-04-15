@@ -55,26 +55,32 @@ verificarOCrearArchivoJSON(vendedoresFilePath);
 // Endpoints aquí
 
 // Endpoint para iniciar sesión
+// Endpoint para iniciar sesión
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
     
     fs.readFile(usersFilePath, 'utf8', (err, data) => {
         if (err) {
-            console.error(err);
+            console.error("Error al leer el archivo de usuarios", err);
             res.status(500).send('Error al leer el archivo de usuarios');
             return;
         }
         
         const users = JSON.parse(data);
+        console.log("Usuarios cargados para autenticación:", users); // Log para debug: muestra todos los usuarios cargados
+
         const user = users.find(u => u.username === username && u.password === password);
         
         if (user) {
+            console.log("Usuario autenticado con éxito:", user); // Log para debug: muestra el usuario autenticado
             res.status(200).json({ message: 'Login exitoso', user });
         } else {
+            console.log("Fallo de autenticación para usuario:", username); // Log para debug: intento fallido de autenticación
             res.status(401).send('Credenciales incorrectas');
         }
     });
 });
+
 
 // Endpoint para obtener todos los eventos, con opción de filtrar por sellerId y status
 app.get('/eventos', (req, res) => {

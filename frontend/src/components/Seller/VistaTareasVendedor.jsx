@@ -20,6 +20,7 @@ const VistaTareasVendedor = ({ isOpen, onRequestClose, tasksOfSeller, sellerName
       <ul>
         {tasksOfSeller && tasksOfSeller.map((task, index) => (
           <li key={index}>
+            <strong>Fecha:</strong> {task.date}<br />
             <strong>Horario:</strong> {task.time}<br />
             <strong>Tarea:</strong> {task.name}<br />
             <strong>Detalle:</strong> {task.content}<br />
