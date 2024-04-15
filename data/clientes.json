@@ -1,0 +1,16 @@
+[
+  {
+    "nombre": "Carlos Manuel",
+    "apellido": "Martínez",
+    "email": "martinezcarlosmanuel.1@gmail.com",
+    "telefono": "1158235845",
+    "id": 1
+  },
+  {
+    "nombre": "Generico",
+    "apellido": "-",
+    "email": "-",
+    "telefono": "-",
+    "id": 2
+  }
+]

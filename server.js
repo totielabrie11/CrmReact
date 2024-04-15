@@ -19,7 +19,8 @@ app.use(cors({
             callback(new Error('CORS not allowed for this origin'));
         }
     },
-    methods: ['GET', 'POST'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true
 }));
 
 
@@ -37,6 +38,7 @@ if (!fs.existsSync(dataDirPath)) {
 const eventosFilePath = path.join(dataDirPath, 'eventos.json');
 const vendedoresFilePath = path.join(dataDirPath, 'vendedores.json');
 const usersFilePath = path.join(dataDirPath, 'us.json');
+const clientsFilePath  = path.join(dataDirPath, 'clientes.json');
 
 // Función para verificar o crear los archivos JSON
 const verificarOCrearArchivoJSON = (filePath, defaultData = '[]') => {
@@ -46,6 +48,7 @@ const verificarOCrearArchivoJSON = (filePath, defaultData = '[]') => {
 };
 
 // Verificar o crear los archivos al iniciar el servidor
+verificarOCrearArchivoJSON(clientsFilePath);
 verificarOCrearArchivoJSON(eventosFilePath);
 verificarOCrearArchivoJSON(vendedoresFilePath);
 
@@ -272,6 +275,57 @@ app.get('/vendedores', (req, res) => {
     });
 });
 
+//Este endpoint actualiza un vendedor existente basado en su ID.
+app.put('/vendedores/:id', (req, res) => {
+    const { id } = req.params;
+    const sellerUpdates = req.body;
+    fs.readFile(vendedoresFilePath, (err, data) => {
+        if (err) {
+            res.status(500).send('Error al leer el archivo de vendedores');
+            return;
+        }
+        let vendedores = JSON.parse(data);
+        const index = vendedores.findIndex(s => s.id === parseInt(id));
+        if (index === -1) {
+            res.status(404).send('Vendedor no encontrado');
+            return;
+        }
+        vendedores[index] = { ...vendedores[index], ...sellerUpdates };
+        fs.writeFile(vendedoresFilePath, JSON.stringify(vendedores, null, 2), (err) => {
+            if (err) {
+                res.status(500).send('Error al actualizar el vendedor');
+                return;
+            }
+            res.status(200).send(vendedores[index]);
+        });
+    });
+});
+
+//Este endpoint elimina un vendedor basado en su ID.
+app.delete('/vendedores/:id', (req, res) => {
+    const { id } = req.params;
+    fs.readFile(vendedoresFilePath, (err, data) => {
+        if (err) {
+            res.status(500).send('Error al leer el archivo de vendedores');
+            return;
+        }
+        let vendedores = JSON.parse(data);
+        const index = vendedores.findIndex(s => s.id === parseInt(id));
+        if (index === -1) {
+            res.status(404).send('Vendedor no encontrado');
+            return;
+        }
+        vendedores.splice(index, 1);
+        fs.writeFile(vendedoresFilePath, JSON.stringify(vendedores, null, 2), (err) => {
+            if (err) {
+                res.status(500).send('Error al eliminar el vendedor');
+                return;
+            }
+            res.status(200).send('Vendedor eliminado');
+        });
+    });
+});
+
 
 
 // Endpoint para verificar la existencia de un evento en un horario específico
@@ -298,6 +352,96 @@ app.get('/eventos/verificar', (req, res) => {
     });
 });
 
+//Endpoint para Listar Todos los Clientes
+app.get('/clientes', (req, res) => {
+    fs.readFile(clientsFilePath, (err, data) => {
+        if (err) {
+            return res.status(500).send('Error al leer el archivo de clientes');
+        }
+        const clientes = JSON.parse(data);
+        res.status(200).json(clientes);
+    });
+});
+
+//Enpoint que obtiene clientes por ID
+app.get('/clientes/:id', (req, res) => {
+    const { id } = req.params;
+    fs.readFile(clientsFilePath, (err, data) => {
+        if (err) {
+            return res.status(500).send('Error al leer el archivo de clientes');
+        }
+        const clientes = JSON.parse(data);
+        const cliente = clientes.find(c => c.id === Number(id));
+        if (cliente) {
+            res.status(200).json(cliente);
+        } else {
+            res.status(404).send('Cliente no encontrado');
+        }
+    });
+});
+
+//Endpoint, para crear un Nuevo Cliente
+app.post('/clientes', (req, res) => {
+    const newClient = req.body;
+    fs.readFile(clientsFilePath, (err, data) => {
+        if (err) {
+            return res.status(500).send('Error al leer el archivo de clientes');
+        }
+        const clientes = JSON.parse(data);
+        newClient.id = clientes.length + 1; // Simple ID assignment
+        clientes.push(newClient);
+        fs.writeFile(clientsFilePath, JSON.stringify(clientes, null, 2), (err) => {
+            if (err) {
+                return res.status(500).send('Error al guardar el nuevo cliente');
+            }
+            res.status(201).json(newClient);
+        });
+    });
+});
+
+//Enpoint para actualizar un Cliente Existente
+app.put('/clientes/:id', (req, res) => {
+    const { id } = req.params;
+    fs.readFile(clientsFilePath, (err, data) => {
+        if (err) {
+            return res.status(500).send('Error al leer el archivo de clientes');
+        }
+        let clientes = JSON.parse(data);
+        const index = clientes.findIndex(c => c.id === Number(id));
+        if (index === -1) {
+            return res.status(404).send('Cliente no encontrado');
+        }
+        clientes[index] = {...clientes[index], ...req.body};
+        fs.writeFile(clientsFilePath, JSON.stringify(clientes, null, 2), (err) => {
+            if (err) {
+                return res.status(500).send('Error al actualizar el cliente');
+            }
+            res.status(200).json(clientes[index]);
+        });
+    });
+});
+
+//Enpoint para eliminar un Cliente
+app.delete('/clientes/:id', (req, res) => {
+    const { id } = req.params;
+    fs.readFile(clientsFilePath, (err, data) => {
+        if (err) {
+            return res.status(500).send('Error al leer el archivo de clientes');
+        }
+        let clientes = JSON.parse(data);
+        const index = clientes.findIndex(c => c.id === Number(id));
+        if (index === -1) {
+            return res.status(404).send('Cliente no encontrado');
+        }
+        clientes.splice(index, 1);
+        fs.writeFile(clientsFilePath, JSON.stringify(clientes, null, 2), (err) => {
+            if (err) {
+                return res.status(500).send('Error al eliminar el cliente');
+            }
+            res.status(200).send('Cliente eliminado');
+        });
+    });
+});
 
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);

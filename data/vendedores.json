@@ -19,7 +19,7 @@
   },
   {
     "nombre": "Carlos",
-    "apellido": "Martínez",
+    "apellido": "Martínez (totie)",
     "edad": "40",
     "celular": "1158235845",
     "color": "#98FB98",
@@ -54,22 +54,13 @@
     "id": 6
   },
   {
-    "nombre": "Pocho",
+    "nombre": "Pocha",
     "apellido": "Mendez",
     "edad": "41",
     "celular": "1151363373",
-    "color": "#FFE4B5",
+    "color": "#FFF71D",
     "otrosDatos": "tira la piola como ninguna",
     "id": 7
-  },
-  {
-    "nombre": "otro",
-    "apellido": "otro",
-    "edad": "21",
-    "celular": "55",
-    "color": "#FFB6C1",
-    "otrosDatos": "otro",
-    "id": 8
   },
   {
     "nombre": "ekaterina",

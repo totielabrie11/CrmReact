@@ -6,6 +6,7 @@ import CalendarComponent from './components/Calendar/CalendarComponent';
 import SellerComponent from './components/Seller/SellerComponent';
 import EventComponent from './components/Event/EventComponent';
 import SellerDisplay from './components/Seller/SellerDisplay';
+import ClientManager from './components/Cliente/ClientManager'; // Importa el componente de gestión de clientes
 
 import './App.css';
 
@@ -21,6 +22,7 @@ function Navbar() {
             <>
               <Link to="/new-seller">Nuevo Vendedor</Link>
               <Link to="/new-event">Nuevo Evento</Link>
+              <Link to="/client-manager">Gestión de Clientes</Link>  {/* Nuevo enlace para administradores */}
             </>
           )}
           {user.type === 'vendedor' && (
@@ -58,6 +60,7 @@ function App() {
             <Route path="/new-seller" element={<ProtectedRoute allowedRoles={['administrador']}><SellerComponent /></ProtectedRoute>} />
             <Route path="/new-event" element={<ProtectedRoute allowedRoles={['administrador']}><EventComponent /></ProtectedRoute>} />
             <Route path="/seller-display" element={<ProtectedRoute allowedRoles={['vendedor']}><SellerDisplay /></ProtectedRoute>} />
+            <Route path="/client-manager" element={<ProtectedRoute allowedRoles={['administrador']}><ClientManager /></ProtectedRoute>} /> {/* Ruta protegida para la gestión de clientes */}
           </Routes>
         </div>
       </Router>
