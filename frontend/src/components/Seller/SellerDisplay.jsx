@@ -37,6 +37,15 @@ const SellerDisplay = () => {
     }
   };
 
+  const markAsCompleted = async (taskId) => {
+    try {
+      await axios.put(`http://localhost:3001/eventos/${taskId}`, { status: 'finalizada' });
+      fetchTasks();
+    } catch (error) {
+      console.error('Error updating task status:', error);
+    }
+  };
+
   if (!user || user.type !== 'vendedor') {
     return <p>Acceso denegado. Solo los vendedores pueden acceder a esta página.</p>;
   }
@@ -63,7 +72,7 @@ const SellerDisplay = () => {
                 onChange={(e) => setNewNote(e.target.value)}
               />
               <button onClick={() => updateNote(task.id)}>Actualizar Nota</button>
-              {/* Aquí la implementación del botón para marcar como completada */}
+              <button onClick={() => markAsCompleted(task.id)}>Tarea Finalizada</button>
             </div>
           </li>
         ))}
@@ -73,4 +82,5 @@ const SellerDisplay = () => {
 };
 
 export default SellerDisplay;
+
 

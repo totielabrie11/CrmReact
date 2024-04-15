@@ -95,7 +95,7 @@
     "sellerColor": "#FFF71D",
     "name": "cuchillos",
     "content": "ir a buscar los cuchillos grabados logo dosivac",
-    "status": "pendiente",
+    "status": "completado",
     "id": 33,
     "notes": [
       {
@@ -116,7 +116,22 @@
       {
         "text": "otra nota nueva",
         "date": "2024-04-03T19:07:56.738Z"
+      },
+      {
+        "text": "envio nueva nota",
+        "date": "2024-04-15T12:15:29.626Z"
       }
     ]
+  },
+  {
+    "date": "2024-05-24",
+    "time": "15:00",
+    "sellerId": "1",
+    "sellerName": "melina coutruneo",
+    "sellerColor": "#FA8072",
+    "name": "sacar expo",
+    "content": "bolivia",
+    "status": "pendiente",
+    "id": 34
   }
 ]

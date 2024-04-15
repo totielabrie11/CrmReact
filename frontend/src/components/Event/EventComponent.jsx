@@ -43,17 +43,9 @@ const EventComponent = () => {
       return;
     }
 
-    // Verifica si el horario ya está ocupado por el mismo vendedor
-  try {
     const checkTimeResponse = await axios.get(`http://localhost:3001/eventos/verificar?date=${eventDate}&time=${eventTime}&sellerId=${sellerId}`);
     if (checkTimeResponse.data.exists) {
       setErrorMessage('El horario seleccionado ya fue asignado a este vendedor');
-      setTimeout(() => setErrorMessage(''), 3000);
-      return;
-  }
-    } catch (error) {
-      console.error('Error al verificar el horario del evento:', error);
-      setErrorMessage('Error al verificar el horario del evento.');
       setTimeout(() => setErrorMessage(''), 3000);
       return;
     }
@@ -71,8 +63,7 @@ const EventComponent = () => {
 
     try {
       const response = await axios.post('http://localhost:3001/eventos', eventData);
-      console.log(response.data.message);
-      setSuccessMessage('Evento cargado exitosamente.');
+      setSuccessMessage(`Evento cargado exitosamente. ID: ${response.data.id}`); // Example of using response data
       setTimeout(() => setSuccessMessage(''), 3000);
       resetForm();
     } catch (error) {
@@ -80,6 +71,7 @@ const EventComponent = () => {
       setErrorMessage('Error al guardar el evento.');
       setTimeout(() => setErrorMessage(''), 3000);
     }
+    
   };
 
   const resetForm = () => {
@@ -98,7 +90,12 @@ const EventComponent = () => {
       <form onSubmit={handleSubmit}>
         <div>
           <label>Fecha del Evento:</label>
-          <input type="text" value={eventDate} disabled />
+          <input
+            type="date"
+            value={eventDate}
+            onChange={(e) => setEventDate(e.target.value)}
+            required={!eventDate}
+          />
         </div>
         <div>
           <label>Horario del Evento:</label>
@@ -145,8 +142,8 @@ const EventComponent = () => {
       </form>
     </div>
   );
-  
 }
 
 export default EventComponent;
+
 
