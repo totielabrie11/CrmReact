@@ -12,5 +12,12 @@
     "email": "-",
     "telefono": "-",
     "id": 2
+  },
+  {
+    "nombre": "Charly",
+    "apellido": "casa de repuestos",
+    "email": "",
+    "telefono": "",
+    "id": 3
   }
 ]

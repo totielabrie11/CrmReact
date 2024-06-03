@@ -18,7 +18,7 @@
     "sellerColor": "#FFB6C1",
     "name": "Pasar a buscar a Rodrigo",
     "content": "por la casa en el conuntry",
-    "status": "pendiente",
+    "status": "completado",
     "id": 26
   },
   {
@@ -51,7 +51,7 @@
     "sellerColor": "#98FB98",
     "name": "hacer pete profundo",
     "content": "bien mojadito",
-    "status": "pendiente",
+    "status": "completado",
     "id": 29
   },
   {
@@ -62,7 +62,7 @@
     "sellerColor": "#98FB98",
     "name": "hacer otro pete",
     "content": "pete",
-    "status": "pendiente",
+    "status": "completado",
     "id": 30
   },
   {
@@ -124,18 +124,6 @@
     ]
   },
   {
-    "date": "2024-05-25",
-    "time": "10:00",
-    "sellerId": "3",
-    "clientId": "1",
-    "sellerName": "Carlos Martínez",
-    "clientName": "Carlos Manuel Martínez",
-    "name": "interrogar",
-    "content": "sobre robo de pape higenico",
-    "status": "pendiente",
-    "id": 34
-  },
-  {
     "date": "2024-06-07",
     "time": "10:00",
     "sellerId": "1",
@@ -145,7 +133,72 @@
     "clientName": "Carlos Manuel Martínez",
     "name": "torta",
     "content": "cumple de naza",
-    "status": "pending",
+    "status": "completado",
     "id": 35
+  },
+  {
+    "date": "2024-04-25",
+    "time": "15:00",
+    "sellerId": "4",
+    "clientId": "3",
+    "sellerName": "Pablo Ugarriz",
+    "sellerColor": "#FFF71D",
+    "clientName": "Charly casa de repuestos",
+    "name": "visit",
+    "content": "reelevar",
+    "status": "completado",
+    "id": 36
+  },
+  {
+    "date": "2024-04-25",
+    "time": "15:00",
+    "sellerId": "3",
+    "clientId": "2",
+    "sellerName": "Carlos Martínez (totie)",
+    "sellerColor": "#98FB98",
+    "clientName": "Generico -",
+    "name": "1",
+    "content": "1",
+    "status": "pendiente",
+    "id": 39
+  },
+  {
+    "date": "2024-04-02",
+    "time": "15:00",
+    "sellerId": "4",
+    "clientId": "1",
+    "sellerName": "Pablo Ugarriz",
+    "sellerColor": "#FFF71D",
+    "clientName": "Carlos Manuel Martínez",
+    "name": "sacar guita",
+    "content": "guita",
+    "status": "pendiente",
+    "id": 40
+  },
+  {
+    "date": "2024-06-06",
+    "time": "15:00",
+    "sellerId": "6",
+    "clientId": "2",
+    "sellerName": "Hugo Verón",
+    "sellerColor": "#FFB6C1",
+    "clientName": "Generico -",
+    "name": "visita",
+    "content": "llevar la bomba reparada",
+    "status": "pendiente",
+    "id": 41
+  },
+  {
+    "date": "2024-06-13",
+    "time": "15:00",
+    "sellerId": "4",
+    "clientId": "2",
+    "sellerName": "Pablo Ugarriz",
+    "sellerColor": "#FFF71D",
+    "clientName": "Generico -",
+    "name": "visita técnica",
+    "content": "ir a reelevar unos equipos vender productos",
+    "status": "pendiente",
+    "id": 42
   }
 ]

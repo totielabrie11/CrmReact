@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '../AuthContext/AuthContext';
 import axios from 'axios';
 import { format, isValid, parseISO } from 'date-fns';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const SellerDisplay = () => {
   const { user } = useAuth();
@@ -24,6 +25,11 @@ const SellerDisplay = () => {
   }, [fetchTasks]);
 
   const updateNote = async (taskId) => {
+    if (!newNote.trim()) {
+      alert("La nota no puede estar vacía.");
+      return;
+    }
+
     const noteData = {
       text: newNote,
       date: new Date().toISOString(),
@@ -42,7 +48,7 @@ const SellerDisplay = () => {
       await axios.put(`http://localhost:3001/eventos/${taskId}`, { status: 'finalizada' });
       fetchTasks();
     } catch (error) {
-      console.error('Error updating task status:', error);
+      console.error('Error al actualizar el estado de la tarea:', error);
     }
   };
 
@@ -51,28 +57,31 @@ const SellerDisplay = () => {
   }
 
   return (
-    <div>
+    <div className="container mt-5">
       <h2>Mis Tareas Pendientes</h2>
-      <ul>
+      <ul className="list-group">
         {tasks.map(task => (
-          <li key={task.id}>
+          <li key={task.id} className="list-group-item mb-3">
             <div>
-              <strong>Tarea:</strong> {task.name} <br />
-              <strong>Detalle:</strong> {task.content} <br />
-              <strong>Estado:</strong> {task.status} <br />
+              <h5>{task.name}</h5>
+              <p><strong>Detalle:</strong> {task.content}</p>
+              <p><strong>Estado:</strong> {task.status}</p>
               {task.notes?.map((note, index) => (
-                <div key={index}>
+                <div key={index} className="alert alert-secondary">
                   <strong>Nota ({isValid(parseISO(note.date)) ? format(parseISO(note.date), 'PPpp') : 'Fecha inválida'}):</strong> {note.text}
                 </div>
               ))}
-              <input
-                type="text"
-                placeholder="Añadir nota"
-                value={newNote}
-                onChange={(e) => setNewNote(e.target.value)}
-              />
-              <button onClick={() => updateNote(task.id)}>Actualizar Nota</button>
-              <button onClick={() => markAsCompleted(task.id)}>Tarea Finalizada</button>
+              <div className="input-group mb-3">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Añadir nota"
+                  value={newNote}
+                  onChange={(e) => setNewNote(e.target.value)}
+                />
+                <button className="btn btn-primary" onClick={() => updateNote(task.id)}>Actualizar Nota</button>
+              </div>
+              <button className="btn btn-success" onClick={() => markAsCompleted(task.id)}>Tarea Finalizada</button>
             </div>
           </li>
         ))}
@@ -82,5 +91,6 @@ const SellerDisplay = () => {
 };
 
 export default SellerDisplay;
+
 
 

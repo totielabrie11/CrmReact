@@ -36,15 +36,6 @@
     "id": 4
   },
   {
-    "nombre": "totie",
-    "apellido": "labrie",
-    "edad": "25",
-    "celular": "1515151151",
-    "color": "#F4A460",
-    "otrosDatos": "soy el mejor",
-    "id": 5
-  },
-  {
     "nombre": "Hugo",
     "apellido": "Verón",
     "edad": "51",
@@ -52,23 +43,5 @@
     "color": "#FFB6C1",
     "otrosDatos": "Vendedor de calle con vehiculo",
     "id": 6
-  },
-  {
-    "nombre": "Pocha",
-    "apellido": "Mendez",
-    "edad": "41",
-    "celular": "1151363373",
-    "color": "#FFF71D",
-    "otrosDatos": "tira la piola como ninguna",
-    "id": 7
-  },
-  {
-    "nombre": "ekaterina",
-    "apellido": "cordoba",
-    "edad": "41",
-    "celular": "1158585858",
-    "color": "#98FB98",
-    "otrosDatos": "tira pete",
-    "id": 9
   }
 ]

@@ -12,12 +12,12 @@
   {
     "username": "Charly",
     "password": "charly123",
-    "type": "vendedor"
+    "type": "administrador"
   },
   {
     "id": 4,
     "username": "Pablo",
-    "password": "totie",
+    "password": "123456U",
     "type": "vendedor" 
   },
   {

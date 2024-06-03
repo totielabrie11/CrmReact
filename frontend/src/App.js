@@ -7,7 +7,8 @@ import SellerComponent from './components/Seller/SellerComponent';
 import EventComponent from './components/Event/EventComponent';
 import SellerDisplay from './components/Seller/SellerDisplay';
 import ClientManager from './components/Cliente/ClientManager'; // Importa el componente de gestión de clientes
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import './App.css';
 
 function Navbar() {
@@ -69,3 +70,4 @@ function App() {
 }
 
 export default App;
+
