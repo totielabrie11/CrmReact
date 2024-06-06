@@ -6,7 +6,13 @@
   border-radius: 8px; /* Bordes redondeados */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra suave para darle profundidad */
   margin-left: 20px; /* Espacio a la izquierda del calendario */
-  width: 310px; /* Ancho fijo para la lista de vendedores */
+  width: 40%; /* Ancho fijo para la lista de vendedores */
+  text-align: center; /* Centrar el texto dentro del contenedor */
+}
+
+.vendedores-container > * {
+  display: inline-block; /* Asegura que los elementos hijos sean inline-block */
+  margin: 10px 0; /* Espaciado vertical entre elementos */
 }
 
 .vendedores-container h2 {
