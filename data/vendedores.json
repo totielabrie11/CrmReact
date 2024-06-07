@@ -4,25 +4,16 @@
     "apellido": "coutruneo",
     "edad": "39",
     "celular": "1111111",
-    "color": "#FA8072",
+    "color": "#8B0000",
     "otrosDatos": "vendedora ecomerce",
     "id": 1
-  },
-  {
-    "nombre": "leonardo",
-    "apellido": "diFusco",
-    "edad": "44",
-    "celular": "1515151515",
-    "color": "#FFE4B5",
-    "otrosDatos": "vendedor de repuestos",
-    "id": 2
   },
   {
     "nombre": "Carlos",
     "apellido": "Martínez (totie)",
     "edad": "40",
     "celular": "1158235845",
-    "color": "#98FB98",
+    "color": "#7FFF00",
     "otrosDatos": "Mejor vendedor de calle",
     "id": 3
   },
@@ -40,8 +31,17 @@
     "apellido": "Verón",
     "edad": "51",
     "celular": "1156565656",
-    "color": "#FFB6C1",
+    "color": "#FF4500",
     "otrosDatos": "Vendedor de calle con vehiculo",
     "id": 6
+  },
+  {
+    "nombre": "Leonardo",
+    "apellido": "DiFusco",
+    "edad": "44",
+    "celular": "15858487544",
+    "color": "#FF69B4",
+    "otrosDatos": "Cierra negocios y atiende de forma correcta",
+    "id": 11
   }
 ]

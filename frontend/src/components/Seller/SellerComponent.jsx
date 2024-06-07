@@ -18,9 +18,9 @@ const SellerComponent = () => {
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [colors] = useState([
-    '#FFB6C1', '#FA8072', '#FFA07A', '#FFE4B5', 
-    '#FFFACD', '#98FB98', '#AFEEEE', '#FFF71D', 
-    '#F08080', '#F4A460'
+    '#FF4500', '#DC143C', '#8A2BE2', '#00CED1', 
+    '#FFD700', '#FF69B4', '#7FFF00', '#8B0000', 
+    '#0000CD', '#4B0082'
   ]);
 
   useEffect(() => {

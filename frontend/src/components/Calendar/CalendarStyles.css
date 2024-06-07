@@ -67,13 +67,14 @@
   }
 
   /* Clases dinámicas basadas en los colores de los vendedores */
-.react-calendar__tile--event-color-FFB6C1 { background-color: #FFB6C1; }
-.react-calendar__tile--event-color-FA8072 { background-color: #FA8072; }
-.react-calendar__tile--event-color-FFA07A { background-color: #FFA07A; }
-.react-calendar__tile--event-color-FFE4B5 { background-color: #FFE4B5; }
-.react-calendar__tile--event-color-FFFACD { background-color: #FFFACD; }
-.react-calendar__tile--event-color-98FB98 { background-color: #98FB98; }
-.react-calendar__tile--event-color-AFEEEE { background-color: #AFEEEE; }
-.react-calendar__tile--event-color-FFF71D { background-color: #FFF71D; }
-.react-calendar__tile--event-color-F08080 { background-color: #F08080; }
-.react-calendar__tile--event-color-F4A460 { background-color: #F4A460; }
+  .react-calendar__tile--event-color-FF4500 { background-color: #FF4500; }
+  .react-calendar__tile--event-color-DC143C { background-color: #DC143C; }
+  .react-calendar__tile--event-color-8A2BE2 { background-color: #8A2BE2; }
+  .react-calendar__tile--event-color-00CED1 { background-color: #00CED1; }
+  .react-calendar__tile--event-color-FFD700 { background-color: #FFD700; }
+  .react-calendar__tile--event-color-FF69B4 { background-color: #FF69B4; }
+  .react-calendar__tile--event-color-7FFF00 { background-color: #7FFF00; }
+  .react-calendar__tile--event-color-8B0000 { background-color: #8B0000; }
+  .react-calendar__tile--event-color-0000CD { background-color: #0000CD; }
+  .react-calendar__tile--event-color-4B0082 { background-color: #4B0082; }
+  

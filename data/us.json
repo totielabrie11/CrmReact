@@ -18,7 +18,7 @@
     "id": 4,
     "username": "Pablo",
     "password": "123456U",
-    "type": "vendedor" 
+    "type": "vendedor"
   },
   {
     "id": "7",
@@ -36,6 +36,12 @@
     "id": "9",
     "username": "ekaterina",
     "password": "totie",
+    "type": "vendedor"
+  },
+  {
+    "id": "11",
+    "username": "Leonardo",
+    "password": "jacinto",
     "type": "vendedor"
   }
 ]

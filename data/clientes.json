@@ -4,7 +4,9 @@
     "apellido": "Martínez",
     "email": "martinezcarlosmanuel.1@gmail.com",
     "telefono": "1158235845",
-    "id": 1
+    "id": 1,
+    "tipoIdentificacion": "DNI",
+    "identificacion": "30796516"
   },
   {
     "nombre": "Generico",
@@ -14,10 +16,12 @@
     "id": 2
   },
   {
-    "nombre": "Charly",
-    "apellido": "casa de repuestos",
-    "email": "",
-    "telefono": "",
-    "id": 3
+    "nombre": "OSAL",
+    "apellido": "reparaciones de bombas y motores",
+    "email": "info@osal.com.ar",
+    "telefono": "4488-2295",
+    "id": 3,
+    "tipoIdentificacion": "CUIT",
+    "identificacion": "27-22297368-1"
   }
 ]

@@ -10,6 +10,8 @@ const ClientManager = () => {
     apellido: "",
     email: "",
     telefono: "",
+    tipoIdentificacion: "DNI",
+    identificacion: ""
   });
 
   useEffect(() => {
@@ -32,7 +34,10 @@ const ClientManager = () => {
     });
   };
 
-  const submitForm = async () => {
+  const submitForm = async (event) => {
+    event.preventDefault();
+    if (!validateForm()) return;
+
     if (isEditing) {
       await axios.put(`http://localhost:3001/clientes/${selectedClient.id}`, formData);
     } else {
@@ -40,6 +45,18 @@ const ClientManager = () => {
     }
     fetchClients();
     resetForm();
+  };
+
+  const validateForm = () => {
+    if (formData.tipoIdentificacion === "DNI" && !/^\d{8}$/.test(formData.identificacion)) {
+      alert('El DNI debe tener 8 dígitos.');
+      return false;
+    }
+    if (formData.tipoIdentificacion === "CUIT" && !/^\d{2}-\d{8}-\d{1}$/.test(formData.identificacion)) {
+      alert('El CUIT debe tener el formato XX-XXXXXXXX-X.');
+      return false;
+    }
+    return true;
   };
 
   const resetForm = () => {
@@ -50,6 +67,8 @@ const ClientManager = () => {
       apellido: "",
       email: "",
       telefono: "",
+      tipoIdentificacion: "DNI",
+      identificacion: ""
     });
   };
 
@@ -75,6 +94,7 @@ const ClientManager = () => {
                 <h5 className="card-title">{client.nombre} {client.apellido}</h5>
                 <p className="card-text">Email: {client.email}</p>
                 <p className="card-text">Teléfono: {client.telefono}</p>
+                <p className="card-text">Identificación: {client.tipoIdentificacion === 'DNI' ? 'DNI' : 'CUIT'} {client.identificacion}</p>
                 <button className="btn btn-primary me-2" onClick={() => startEdit(client)}>Editar</button>
                 <button className="btn btn-danger" onClick={() => deleteClient(client.id)}>Eliminar</button>
               </div>
@@ -102,6 +122,26 @@ const ClientManager = () => {
                   <label className="form-label">Teléfono</label>
                   <input type="tel" name="telefono" className="form-control" value={formData.telefono} onChange={handleFormChange} required />
                 </div>
+                <div className="mb-3">
+                  <label className="form-label">Tipo de Identificación</label>
+                  <select name="tipoIdentificacion" className="form-select" value={formData.tipoIdentificacion} onChange={handleFormChange} required>
+                    <option value="DNI">DNI</option>
+                    <option value="CUIT">CUIT</option>
+                  </select>
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">{formData.tipoIdentificacion}</label>
+                  <input
+                    type="text"
+                    name="identificacion"
+                    className="form-control"
+                    value={formData.identificacion}
+                    onChange={handleFormChange}
+                    placeholder={formData.tipoIdentificacion === "DNI" ? "00000000" : "00-00000000-0"}
+                    maxLength={formData.tipoIdentificacion === "DNI" ? 8 : 13}
+                    required
+                  />
+                </div>
                 <button type="submit" className="btn btn-success">{isEditing ? "Actualizar" : "Agregar"}</button>
                 {isEditing && <button type="button" className="btn btn-secondary ms-2" onClick={resetForm}>Cancelar</button>}
               </form>
@@ -114,3 +154,4 @@ const ClientManager = () => {
 };
 
 export default ClientManager;
+

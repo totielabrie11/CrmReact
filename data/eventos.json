@@ -200,5 +200,24 @@
     "content": "ir a reelevar unos equipos vender productos",
     "status": "pendiente",
     "id": 42
+  },
+  {
+    "date": "2024-06-20",
+    "time": "15:00",
+    "sellerId": "11",
+    "clientId": "3",
+    "sellerName": "Leonardo DiFusco",
+    "sellerColor": "#FF69B4",
+    "clientName": "OSAL reparaciones de bombas y motores",
+    "name": "visita tecnica",
+    "content": "ofrecer servicios - llevar catálogos",
+    "status": "finalizada",
+    "id": 43,
+    "notes": [
+      {
+        "text": "fui toque timbre y no atendio nadie",
+        "date": "2024-06-07T12:17:53.021Z"
+      }
+    ]
   }
 ]
